@@ -1,0 +1,92 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Generalized Lagrange Equation}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+Starting from the principle of the least action, which has the definition:
+\begin{equation}
+  S[t] = \int_{t_1}^{t_2} L(\bm{x}, \dot{\bm{x}}, t)\,\dd{t}
+\end{equation}
+Here the t is the parameter, usually we use it as time. $\bm{x}$ is the generalized coordination, and $L$ is the Lagrange. $\bm{x}$ is $t$ dependent
+which means $\bm{x}(t)$. According to the 
+principle of the least action, we have:
+\begin{equation}
+  \delta S = 0
+\end{equation}
+We only assume the variation of $x$, which gives:
+\begin{align}
+  \delta S &= \int_{t_1}^{t_2} \delta L(\bm{x}, \dot{\bm{x}}, t)\,\dd{t}\nonumber\\
+  &= \int_{t_1}^{t_2} \frac{\partial L}{\partial x^i}\delta x^i + \frac{\partial L}{\partial \dot{x}^i}\delta\dot{x}^i + \frac{\partial L}{\partial t}\delta t\,\dd{t}\nonumber\\
+  &= \int_{t_1}^{t_2} \frac{\partial L}{\partial x^i}\delta x^i + \frac{\partial L}{\partial \dot{x}^i}\delta\dot{x}^i\,\dd{t}
+\end{align}
+And we have:
+\begin{align}
+  \int_{t_1}^{t_2} \frac{\partial L}{\partial\dot{x}^i}\delta\dot{x}^i \,\dd{t} &=  \left.\left[\frac{\partial L}{\partial \dot{x}^i}\delta x^i\right]\right|^{t_2}_{t_1}
+  - \int_{t_1}^{t_2}\dv{t}(\frac{\partial L}{\partial \dot{x}^i})\delta x^i\,\dd{t}  \nonumber\\
+  &= -\int_{t_1}^{t_2}\dv{t}(\frac{\partial L}{\partial \dot{x}^i})\delta x^i\,\dd{t} 
+\end{align}
+And now we have:
+\begin{equation}
+  \delta S = \int_{t_1}^{t_2} \frac{\partial L}{\partial x^i}\delta x^i - \dv{t}(\frac{\partial L}{\partial \dot{x}^i})\delta x^i\,\dd{t} = 0
+\end{equation}
+Thus we have the Euler-Lagrange equation:
+\begin{equation}
+  \dv{t}(\frac{\partial L}{\partial \dot{x}^i}) - \frac{\partial L}{\partial x^i} = 0
+\end{equation}
+We can define $\frac{\partial L}{\partial \dot{x}^i} = p^i$, applying Legendre transformation, we have Hamiltonia:
+\begin{equation}
+  H(\bm{x}, \bm{p}) = p_i\dot{x}^i - L(\bm{x}, \bm{p})
+\end{equation}
+Actually the term $p_i\dot{x}^i$ is the so called symplectic potential, and we can replace the $\bm{x}$ and $\bm{p}$ 
+in a very general form $\bm{\xi}$, so the Lagrange can be written as:
+\begin{equation}
+  L = -a_i(\bm{\xi})\dot{\xi}^i - H(\bm{\xi})
+\end{equation}
+Using this form, we can substitute it into the Euler-Lagrange equation, which has:
+\begin{align}
+  \pdv{L}{\xi^i} &= -\pdv{a_j}{\xi^i}\dot{\xi}^j - \pdv{H}{\xi^i}\\
+  \pdv{L}{\dot{\xi}^i} &= -a_i 
+\end{align}
+So we have:
+\begin{align}
+  \dv{t}(\frac{\partial L}{\partial \dot{\xi}^i}) - \frac{\partial L}{\partial \xi^i} &= -\pdv{a_i}{\xi^j}\dot{\xi}^j + \pdv{a_j}{\xi^i}\dot{\xi}^j + \pdv{H}{\xi^i}\nonumber\\
+  &= \left(\pdv{a_j}{\xi^i} - \pdv{a_i}{\xi^j}\right)\dot{\xi}^j + \pdv{H}{\xi^i} = 0
+\end{align}
+Here we define the term $\pdv{a_j}{\xi^i} - \pdv{a_i}{\xi^j}$ as $b_{ij}$, then we have:
+\begin{equation}
+  b_{ij}\dot{\xi}^j = -\pdv{H}{\xi^i}
+\end{equation}
+Here the $\bm{a}(\bm{\xi})$ is the Berry connection, while the $b_{ij}$ is the Berry curvature.
+
+For quantum system, here we only consider the coherent state, which means that the quantum state can be uniquely
+determined by a set of parameters, which is $\ket{\psi(\bm{\xi})}$. In this case the single point in phase space is
+exactly a quantum state.
+The Schrodinger equation is:
+\begin{equation}
+  i\dv{t}\ket{\psi} = \hat{H}\ket{\psi}
+\end{equation}
+Which is obtained from the definition of action:
+\begin{equation}
+  S = \int_{t_1}^{t_2} \bra{\psi} i\dv{t} - \hat{H} \ket{\psi}
+\end{equation}
+And we can get:
+\begin{equation}
+  i\bra{\psi}\dv{t}\ket{\psi} - \bra{\psi} \hat{H}\ket{\psi} = 0
+\end{equation}
+Comparing with the generalized Lagrange equation, we have:
+\begin{equation}
+  i\bra{\psi}\dv{t}\ket{\psi} = -a_i(\xi)\dot{\xi}^i
+\end{equation}
+Now look into the term $i\bra{\psi}\dv{t}\ket{\psi}$, which is:
+\begin{equation}
+  i\bra{\psi}\dv{t}\ket{\psi} = i\bra{\psi}\pdv{\xi^i}\dot{\xi}^i\ket{\psi}
+\end{equation}
+$\dot{\xi}^i$ and $\ket{\psi}$ are commutable, so we have:
+\begin{equation}
+  i\bra{\psi}\dv{t}\ket{\psi} = i\bra{\psi}\pdv{\xi^i}\ket{\psi}\dot{\xi}^i
+\end{equation}
+Thus we have:
+\begin{equation}
+  a_i = -i\bra{\psi}\pdv{\xi^i}\ket{\psi}
+\end{equation}
+\end{document}

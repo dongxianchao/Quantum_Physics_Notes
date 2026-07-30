@@ -1,0 +1,156 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Spin}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+Spin is some internal property of particles, like mass.
+To get the value of it, we need a tool that is called spin operator $\bm{S}$. The spin operator is a vector and 
+the basis of this operator space is Pauli matrix. The explicit expression for spin operator is:
+\begin{equation}
+    \hat{\bm{S}} = \frac{\hbar}{2}\bm{\sigma}
+\end{equation}
+The detailed expression for Pauli matrix is:
+\begin{equation}
+    \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\end{equation}
+Note here the representation of the Pauli matrix is based on the basis $\ket{\uparrow}$ and $\ket{\downarrow}$, which means the 
+up-spin and down-spin of electrons along the z-axis. 
+
+
+
+\subsection{Rotation of spin}
+The expression for the rotation of quantum state is that:
+\begin{equation}
+    R(\theta, \hat{\bm{n}}) = \text{exp}\left(-\frac{i}{\hbar}\theta\hat{\bm{n}}\cdot\hat{\bm{J}}\right)
+\end{equation}
+Where $\hat{\bm{n}}$ is the axis of the rotation, and the $\theta$ is the angle. Considering the Lie algebra of the Pauli matrix has the same structure as the rotation, so we can define the rotation of spin
+as:
+\begin{equation}
+    D(\theta, \hat{\bm{n}}) = \text{exp}\left(-\frac{i}{2}\theta\hat{\bm{n}}\cdot\bm{\sigma}\right)
+\end{equation}
+For the expression, we can expand it in Taylor series, which gives:
+\begin{equation}
+    D(\theta, \hat{\bm{n}}) = I + \left(-\frac{i}{2}\theta\hat{\bm{n}}\cdot\bm{\sigma}\right) + \frac{\left(-\frac{i}{2}\theta\hat{\bm{n}}\cdot\bm{\sigma}\right)^2}{2!}
+    + \frac{\left(-\frac{i}{2}\theta\hat{\bm{n}}\cdot\bm{\sigma}\right)^3}{3!}
+    + \dots
+\end{equation}
+It can be noted that:
+\begin{align}
+    (\hat{\bm{n}}\cdot\bm{\sigma})^2 = I
+\end{align}
+So the formulation can be rewritten as:
+\begin{align}
+   D(\theta, \hat{\bm{n}}) &= \left( \sum_{m=0}^{\infty} \frac{(-1)^m}{(2m)!} \left(\frac{\theta}{2}\right)^{2m} \right) I - i \left( \sum_{m=0}^{\infty} \frac{(-1)^m}{(2m+1)!} \left(\frac{\theta}{2}\right)^{2m+1} \right) (\hat{\bm{n}} \cdot \bm{\sigma})\nonumber\\
+   &= \cos(\frac{\theta}{2})I - i\sin(\frac{\theta}{2})(\hat{\bm{n}}\cdot\bm{\sigma})
+\end{align} 
+We may observe that the existence of $\frac{\theta}{2}$, which means the rotation of spin is not SO(3) symmetry. It will not return to the original
+point when you rotate it as $2\pi$. Instead, you have to rotate it to $4\pi$ as a periodic.
+
+
+\subsection{Expression for the eigenstates of spin in any direction}
+To get the eigenstates of the spin in any direction, it's intuitively that we may think that, under a rotation along the
+axis which has the same direction, the spin should not change. So the up-spin along that axis should have the equation:
+\begin{equation}
+    \frac{1}{2}\hat{\bm{n}}\cdot\bm{\sigma} \ket{\psi} = \frac{1}{2} \ket{\psi}
+\end{equation}
+The $\hat{\bm{n}}$ vector can be written as: $\hat{\bm{n}} = \begin{pmatrix}
+    \sin\theta\cos\phi \\ \sin\theta\sin\phi\\ \cos\theta
+\end{pmatrix}$. And we have:
+\begin{align}
+    \hat{\bm{n}}\cdot\bm{\sigma} &= \begin{pmatrix}
+        \cos\theta & \sin\theta\cos\phi - i\sin\theta\sin\phi\\\sin\theta\cos\phi + i\sin\theta\sin\phi & -\cos\theta
+    \end{pmatrix}\nonumber\\
+    &= \begin{pmatrix}
+        \cos\theta & \sin\theta \textrm{e}^{-i\phi}\\
+        \sin\theta\textrm{e}^{i\phi} & -\cos\theta
+    \end{pmatrix}
+\end{align}
+For any arbitrary states, we can denote it as $\begin{pmatrix}
+    u\\v
+\end{pmatrix}$
+So we have:
+\begin{equation}
+    \begin{pmatrix}
+        \cos\theta & \sin\theta \textrm{e}^{-i\phi}\\
+        \sin\theta\textrm{e}^{i\phi} & -\cos\theta
+    \end{pmatrix} \begin{pmatrix}
+    u\\v
+\end{pmatrix} = \begin{pmatrix}
+    u\\v
+\end{pmatrix}
+\end{equation}
+And we can get a relation between $u$ and $v$:
+\begin{align}
+    u\cos\theta + v\sin\theta\textrm{e}^{-i\phi} &= u \nonumber\\
+    v(2\sin\frac{\theta}{2}\cos\frac{\theta}{2})\textrm{e}^{-i\phi} &= 2u\sin^2\frac{\theta}{2}\nonumber\\
+    \frac{u}{v} &= \frac{\cos\frac{\theta}{2}}{\sin\frac{\theta}{2}\textrm{e}^{i\phi}}
+\end{align}
+Thus the eigenstates of the spin in any direction can be expressed as $\begin{pmatrix}
+    \textrm{e}^{-\frac{i\phi}{2}}\cos\frac{\theta}{2}\\ \textrm{e}^{\frac{i\phi}{2}}\sin\frac{\theta}{2}
+\end{pmatrix}$.
+
+A trick for the calculation is that, $\bra{\hat{\bm{n}}}\sigma_z\ket{\hat{\bm{n}}} = \cos\theta$, where $\theta$ is
+the angle between the direction vector and the z axis. Same for $\sigma_x$ and $\sigma_y$, as  $\langle\sigma_x\rangle = \sin\theta\cos\phi$, $\langle\sigma_y\rangle = \sin\theta\sin\phi$.
+
+
+\subsection{Zeeman effect}
+Zeeman effect is that, the magnetic moment will couple with the external magnetic field $\bm{B}$, which gives rise to
+the energy difference. The Hamiltonian for this effect is:
+\begin{equation}
+    \bar{H} =  -\bm{\mu}\cdot\bm{B}
+\end{equation}
+The magnetic moment usually has the structure as:
+\begin{equation}
+    \bm{\mu} = (\text{factor}) \times (\text{g factor}) \times (\text{angular momentum})
+\end{equation}
+Some typical example is:
+\begin{itemize}
+    \item Angular orbital momentum: $\bm{\mu}_{\bm{L}} = -\frac{\mu_B}{\hbar}\bm{L}, g\approx 1$
+    \item Spin magnetic momentum: $\bm{\mu}_{\bm{S}} = -2\frac{\mu_B}{\hbar}\bm{S}, g\approx 2$
+    \item Total angular momentum: $\bm{\mu}_{\bm{J}} = -g_{\bm{J}}\frac{\mu_B}{\hbar}\bm{J}$
+\end{itemize}
+
+
+
+\subsection{Spin orbital coupling}
+In crystal configuration, it may have the expression as:
+\begin{equation}
+    \bar{H} = g\sigma^i \bar{p}_i
+\end{equation}
+Which is contributed by the relativity effect, where the electrons couple with the magnetic field generated by
+it self. So there will have the momentum component in the expression.
+
+
+\subsection{Larmor precession}
+Here we choose the up spin along z axis as $\ket{\uparrow}$, and the magnetic field is $\bm{B} = B\hat{\bm{z}}$, and set $\hbar = 1$. The eigenstate along $\hat{\bm{n}}$ can be written as:
+\begin{equation}
+    \ket{\hat{\bm{n}}} = \textrm{e}^{-\frac{\phi}{2}i}\cos\frac{\theta}{2}\ket{\uparrow} + \textrm{e}^{\frac{i\phi}{2}}\sin\frac{\theta}{2}\ket{\downarrow}
+\end{equation}
+So the Lagrange of the system can be written as:
+\begin{equation}
+    L = \bra{\hat{\bm{n}}}i\dv{t} \ket{\hat{\bm{n}}} - \bra{\hat{\bm{n}}}\hat{H}\ket{\hat{\bm{n}}}
+\end{equation}
+The first term is:
+\begin{equation}
+    \bra{\hat{\bm{n}}}i\dv{t} \ket{\hat{\bm{n}}} = \frac{1}{2}\cos\theta\dot{\phi}
+\end{equation}
+And the second term is:
+\begin{equation}
+    \bra{\hat{\bm{n}}}\hat{H}\ket{\hat{\bm{n}}} = \bra{\hat{\bm{n}}}-\bm{B}\cdot\hat{\bm{S}}\ket{\hat{\bm{n}}} = -\frac{1}{2}B\cos\theta
+\end{equation}
+The Lagrange is:
+\begin{equation}
+    L = \frac{1}{2}\cos\theta\dot{\phi} + \frac{1}{2}B\cos\theta
+\end{equation} 
+And we can get the equation of motion:
+\begin{align}
+    \pdv{L}{\theta} - \dv{t}(\pdv{L}{\dot{\theta}}) &= -\frac{1}{2}B\sin\theta - \frac{1}{2}\dot{\phi}\sin\theta = 0\\
+    \pdv{L}{\phi} - \dv{t}(\pdv{L}{\dot{\phi}}) &= \frac{1}{2}\sin\theta\dot{\theta} = 0
+\end{align}
+Which gives that:
+\begin{align}
+    \dot{\phi} &= -B\\
+    \dot{\theta} &= 0
+\end{align}
+It's exactly $\dv{t}\hat{\bm{n}} = \hat{\bm{n}} \times \bm{B}$. It's so called Larmor precession.
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Transport Property}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+\subsection{Boltzmann Transport Equation}
+
+Imagine there is a phase space, which is used to characterize the dynamics of one coherent state. Assuming the system is composed by a set of coherent state, with each approximately treated as nearly independent to each other. Then we have a distribution function, $g(\bm{\xi}, t)$, denotes the density of states at certain point. For Boson, the distribution obeys $g_0(\bm{\xi}) = \frac{1}{e^{\beta [H(\bm{\xi})-\mu]} - 1}$. For Fermion, the distribution obeys $g_0(\bm{\xi}) = \frac{1}{e^{\beta [H(\bm{\xi})-\mu]} + 1}$. Here $\mu$ is the chemical potential. For equilibrium, we have condition:
+\begin{equation}
+    \dv{g}{t} = 0
+\end{equation}
+which gives:
+\begin{equation}
+    \pdv{g}{t} + \dot{\xi}^i\pdv{g}{\xi^i} = 0
+\end{equation}
+Replace the $\bm{\xi}$ with $\bm{x}$ and $\bm{k}$, we have:
+\begin{equation}
+    \pdv{g}{t} + \dot{x}^i\pdv{g}{x^i} +  \dot{k}^i\pdv{g}{k^i} = 0
+\end{equation}
+For non-equilibrium state, we have equation $\dv{g}{t} = C[g]$, where $C[g]$ is the functional of $g$, stands for collision term. Under the relaxation time approximation (RTA), we have the equation:
+\begin{equation}
+    C[g] \approx - \frac{g - g_0}{\tau}
+\end{equation}
+So the Boltzmann transport equation now is:
+\begin{equation}
+    \pdv{g}{t} + \dot{x}^i\pdv{g}{x^i} +  \dot{k}^i\pdv{g}{k^i} = - \frac{g - g_0}{\tau}
+\end{equation}
+Under the linear response approximation, we can assume that, the density of states can be written as $g = g_0 + \delta g$, where $\delta g$ is the small deviation from equilibrium.
+
+
+The general Lagrange for coherent states is:
+\begin{equation}
+    L = k_i\dot{x}^i - x_i\dot{k}^i - a_i\dot{x}^i - H
+\end{equation}
+\end{document}

@@ -1,0 +1,82 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Periodic crystal}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+For crystal, we can always find its primitive cell. The whole crystal configuration can be treated as the translation of the primitive cell. If we assume the repeated primitive cell as infinite, then the system will have the translation symmetry, which means that, the system is unchanged under the translation operation. In the real case, it's not real infinite but we can approximately treat it as infinite. To keep the translation symmetry under finite number of repeated units, one solution is that, we can wrap it as a circle. For example, in 1D case, if we assume there are $N$ repeated primitive cell, labeled as $0, 1, 2, \dots, N -1$, then we define the translation operator $T$, which function as translate the $i$-th primitive cell to the $i+1$. For the unit near the boundary, like $N-1$, it will be move to the $0$. So it actually looks like a ring.
+
+\subsection{Bloch Basis}
+
+Since the crystal lattice is composed by the repeating of primitive cell, we can assume that, for each primitive cell, there are same localized wave functions. These wave functions are orthonormal to each other. Bloch basis is that we pack all the locally same wave functions into a periodic function. For 1D case, assume the localized wave function as $\ket{\psi(x)}$, with lattice constant as $a$. The Bloch basis is defined as:
+
+\begin{align}
+    \ket{\Psi(x)} &= \frac{1}{\sqrt{N}} [\ket{\psi(x)} + \textrm{e}^{ika}\ket{\psi(x - a)} + \textrm{e}^{2ika}\ket{\psi(x - 2a)} + \dots\nonumber\\ &+ \textrm{e}^{(N-1)ika}\ket{\psi(x - (N - 1)a)}]
+\end{align}
+
+With $k = 0, \frac{2\pi}{Na}, \frac{4\pi}{Na},\dots, \frac{2(N-1)\pi}{Na}$. To explain the construction of the Bloch basis, we have to explain the discrete Fourier transformation first.
+
+Assuming we have a set of data, ${x_0, x_1, \dots, x_{N-1}}$. The set of data obeys the symmetry as, $x_{N + i} = x_i$. Define the translation operator $T$, and use $\bm{x}$ to denote the set, so we have:
+
+\begin{equation}
+    T^N\bm{x} = \bm{x}
+\end{equation} 
+
+The eigenvalue of the operator $T^N$ is $1$. Assuming we have eigenvector $\ket{k}$:
+
+\begin{equation}
+    T\bm{k} = \lambda \bm{k}
+\end{equation}
+
+Then we have relation $\lambda^N = 1$, with solution $\lambda = \textrm{e}^{i\frac{2\pi k}{N}}$, with $k = 0, 1, \dots, N - 1$ (Note: in physics we usually incorporate the factor $\frac{2\pi}{N}$ to represent the wave vector). We can set the orthonormal basis $\ket{n}$, with expression $\braket{i}{n} = \delta_{ni}$. So the eigenvector $\bm{k}$ can be definitely expressed as:
+
+\begin{equation}
+    \ket{k} = \sum_{n=0}^{N-1} C_n \ket{n}
+\end{equation}
+
+By applying the translation operator $T$, we have $T\ket{i} = \ket{i+1}$, thus:
+\begin{equation}
+    T\ket{k} = T \sum_{n=0}^{N-1} C_n \ket{n} = \sum_{n=1}^{N-1} C_{n-1} \ket{n} + C_{N-1}\ket{0} = \textrm{e}^{i\frac{2\pi k}{N}} \ket{k}
+\end{equation}
+
+Thus we have:
+\begin{align}
+    \frac{C_{n-1}}{C_n} &= \textrm{e}^{i\frac{2\pi k}{N}}, (n \ne 0)\nonumber\\
+    \frac{C_{N-1}}{C_0} &= \textrm{e}^{i\frac{2\pi k}{N}}
+\end{align}
+
+A reasonable selection is that, $C_0 = \frac{1}{\sqrt{N}}$, so the expression for $\ket{k}$ is:
+\begin{equation}
+    \ket{k} =  \frac{1}{\sqrt{N}}\sum_{n = 0}^{N-1} \textrm{e}^{-i\frac{2\pi kn}{N}}\ket{n}
+\end{equation}
+And we can get the discrete Fourier transformation matrix as $F_{kn} =  \frac{1}{\sqrt{N}}\textrm{e}^{-i\frac{2\pi kn}{N}}$.
+
+The derivation above explains the selection of Bloch basis.
+
+\subsection{1D Tight Binding Model}
+Assuming a 1D infinite lattice with lattice constant $a$, each primitive cell there is one localized orbital $\ket{\psi(x)}$. Set the hopping term $\bra{\psi(x+a)}H\ket{\psi(x)} = -t$, where $t$ is real, and the eigenvalue for the localized orbital as $\bra{\psi}H\ket{\psi} = \varepsilon_0$. Using the convention above to set the Bloch basis, then we have:
+\begin{equation}
+    E(k) = \bra{\Psi}H\ket{\Psi} = \varepsilon_0 - 2t\cos ka
+\end{equation}
+Which is the so called dispersion relation.
+
+For 1D infinite lattice with lattice constant $a$, with each primitive cell has two localized orbital $\ket{\psi_A(x)}$ and $\ket{\psi_B(x)}$. The 1D lattice is like a chain --A--B--A--B--A--B--. We can define two Bloch basis:
+\begin{align}
+    \ket{\Psi_A(x)} &= \frac{1}{\sqrt{N}} [\ket{\psi_A(x)} + \textrm{e}^{ika}\ket{\psi_A(x - a)} + \textrm{e}^{2ika}\ket{\psi_A(x - 2a)} + \dots\nonumber\\ &+ \textrm{e}^{(N-1)ika}\ket{\psi_A(x - (N - 1)a)}]\\
+    \ket{\Psi_B(x)} &= \frac{1}{\sqrt{N}} [\ket{\psi_B(x)} + \textrm{e}^{ika}\ket{\psi_B(x - a)} + \textrm{e}^{2ika}\ket{\psi_B(x - 2a)} + \dots\nonumber\\ &+ \textrm{e}^{(N-1)ika}\ket{\psi_B(x - (N - 1)a)}]
+\end{align}
+The Hamiltonian turns into a $2\times2$ matrix. Set $\bra{\psi_A}H\ket{\psi_A} = \varepsilon_A$, $\bra{\psi_B}H\ket{\psi_B} = \varepsilon_B$. Assuming the hopping only happens between the connecting neighbors, set $\bra{\psi_A}H\ket{\psi_B} = -t$. The Hamiltonian is:
+\begin{equation}
+    H = \mqty(\varepsilon_A&& -t-t\textrm{e}^{-ika}\\ -t-t\textrm{e}^{ika}&&\varepsilon_B)
+\end{equation}
+Solving the eigenvalue for the Hamiltonian matrix, we have:
+\begin{align}
+    (E-\varepsilon_A)(E-\varepsilon_B) &= 2t^2(1 + \cos ka)\nonumber\\
+    E^2 -(\varepsilon_A + \varepsilon_B)E + \varepsilon_A\varepsilon_B &= 2t^2(1 + \cos ka)
+\end{align}
+Thus the dispersion relation is:
+\begin{equation}
+    E(k) = \frac{(\varepsilon_A + \varepsilon_B) \pm \sqrt{(\varepsilon_A + \varepsilon_B)^2 - 4[\varepsilon_A\varepsilon_B - 2t^2(1 + \cos ka)]}}{2}
+\end{equation}
+Which has two band.
+\end{document}
