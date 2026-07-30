@@ -12,6 +12,9 @@
 *.cb2
 .*.lb
 
+# Ignore chapter PDFs, but keep root main.pdf
+*/*.pdf
+
 ## Intermediate documents:
 *.dvi
 *.xdv
