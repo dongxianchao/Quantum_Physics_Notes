@@ -26,11 +26,69 @@ So the Boltzmann transport equation now is:
 \begin{equation}
     \pdv{g}{t} + \dot{x}^i\pdv{g}{x^i} +  \dot{k}^i\pdv{g}{k^i} = - \frac{g - g_0}{\tau}
 \end{equation}
-Under the linear response approximation, we can assume that, the density of states can be written as $g = g_0 + \delta g$, where $\delta g$ is the small deviation from equilibrium.
 
+\subsection{Intrinsic Anomalous Hall Effect}
+Under the linear response approximation, we can assume that, the density of states can be written as $g = g_0 + \delta g$, where $\delta g$ is the small deviation from equilibrium. In which case we can calculate the current density at certain location:
+\begin{align}
+    \bm{J} &= \frac{-e}{(2\pi)^3}\int g(\bm{\xi}, t) \bm{v}\; \dd^3{k} \nonumber\\
+    &= \frac{-e}{(2\pi)^3} \int (g_0 + \delta g) \bm{v} \;\dd^3{k}
+\end{align}
+Where the factor $\frac{1}{(2\pi)^3}$ is given by the relation $\frac{1}{V} \sum_{\bm{k}} \longrightarrow \int \frac{\dd^3{k}}{(2\pi)^3}$. To solve out the explicit expression, we have to determine the form of $\delta g$. We can set the steady state assumption, which means that, $\pdv{g}{t} = 0$. And we have equation:
+\begin{equation}
+    \dot{x}^i\pdv{g}{x^i} +  \dot{k}^i\pdv{g}{k^i} = - \frac{g - g_0}{\tau}
+\end{equation}
+Using the equation $g = g_0 + \delta g$, we can get:
+\begin{equation}
+    \dot{x}^i\pdv{x^i}(g_0 + \delta g) +  \dot{k}^i\pdv{k^i}(g_0 + \delta g) = - \frac{\delta g}{\tau}
+\end{equation}
 
 The general Lagrange for coherent states is:
 \begin{equation}
-    L = k_i\dot{x}^i - x_i\dot{k}^i - a_i\dot{x}^i - H
+    L = k_i\dot{x}^i - a_i(\bm{x})\dot{x}^i - \tilde{a}_i(\bm{k})\dot{k}^i - H
 \end{equation}
+Applying Lagrange equation, we have:
+\begin{align}
+    \dot{k}_i + b_{ij}\dot{x}^j &= -\pdv{H}{x^i}\\
+    -\dot{x}^i + \tilde{b}_{ij} \dot{k}^j &= -\pdv{H}{k^i}
+\end{align}
+
+For the system that we only apply an external electric field, the Hamiltonian for a single electron is:
+\begin{equation}
+    H = \epsilon(\bm{k}) - eE_ix^i
+\end{equation}
+Where $\epsilon(\bm{k})$ is the dispersion relation. The term $b_{ij}$ is $0$ due to there's no external magnetic field. Also we can get:
+\begin{align}
+    \pdv{H}{x^i} &= -e E_i\\
+    \pdv{H}{k^i} &= \pdv{\epsilon}{k^i}
+\end{align}
+Thus we can get:
+\begin{align}
+    \dot{k}_i &= eE_i \\
+    \dot{x}^i &= \pdv{\epsilon}{k^i} + \tilde{b}_{ij} \dot{k}^j
+\end{align}
+
+Considering linear response approximation, which means that we only keep up to the first order term. $\dot{x}^i$ is zero order term because it is the intrinsic property of the band structure. $\dot{k}^i$ is first order term because it's driven by the external electric field, which is first order term. $\pdv{\bm{\xi}} g_0$ is zero order term because it's intrinsic property of the distribution. So we can reduce the equation to:
+\begin{equation}
+    \dot{x}^i\pdv{x^i}g_0 + \dot{k}^i\pdv{k^i}g_0 = -\frac{\delta g}{\tau}
+\end{equation} 
+Reorganize the equation, and we can get the expression for $\delta g$:
+\begin{equation}
+    (\pdv{\epsilon}{k^i} + \tilde{b}_{ij} \dot{k}^j)\pdv{x^i}g_0 +  eE_i \pdv{k^i}g_0 = -\frac{\delta g}{\tau}
+\end{equation}
+
+Then we have current density:
+\begin{equation}
+    J^\alpha =  \frac{-e}{(2\pi)^3} \int \left[-\tau(\pdv{\epsilon}{k^i} + \tilde{b}_{ij} \dot{k}^j)\pdv{x^i}g_0   - \tau eE_i\pdv{k^i}g_0 + g_0\right](\pdv{\epsilon}{k^\alpha} + \tilde{b}_{\alpha j} \dot{k}^j) \;\dd^3{k}
+\end{equation}
+The space is approximately treated as homogeneous, and for equilibrium distribution $g_0$, there's no gradient $\pdv{g_0}{x^i} = 0$. Then the expression is:
+\begin{equation}
+    J^\alpha = \frac{-e}{(2\pi)^3} \int ( - \tau eE_i\pdv{g_0}{k^i} + g_0)(\pdv{\epsilon}{k^\alpha} + \tilde{b}_{\alpha j} \dot{k}^j) \;\dd^3{k}
+\end{equation}
+There are four terms. $g_0 \pdv{\epsilon}{k^\alpha}$ will be $0$ because it's the equilibrium case. The $\tau eE_i\pdv{g_0}{k^i} \tilde{b}_{\alpha j} \dot{k}^j$ term will be ignored because $\dot{k}_j = eE_j$. Thus it's second order term. In the end, we get the expression:
+\begin{align}
+    J^\alpha &= \frac{1}{(2\pi)^3}\int \tau e^2 E_i \pdv{g_0}{k^i}\pdv{\epsilon}{k^\alpha} - e g_0 \tilde{b}_{\alpha j} \dot{k}^j\;\dd^3{k}\nonumber\\ 
+    &= \frac{1}{(2\pi)^3}\int \tau e^2 E_i \pdv{g_0}{k^i}\pdv{\epsilon}{k^\alpha} - e^2 g_0 \tilde{b}_{\alpha j} E^j\;\dd^3{k}
+\end{align}
+
+The first term is the classical Drude model term, while the second term is the anomalous term, which is contributed by the Berry curvature $\tilde{b}_{ij}$ of the phase space.
 \end{document}
