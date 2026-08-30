@@ -1,0 +1,22 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{\textbf{Basic Concept}}
+\makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
+
+\subsection{Schrodinger Equation}
+Here we don't derive the basic Schrodinger equation, only use it as the basic axiom. Assuming the particle can be represented as a complex function, which is $\Psi(\bm{r}, t)$. The particle's position is described probabilistically, and the specific probability density at a given point in space $\bm{r}_0$ is $\rho(\bm{r}_0, t) = \Psi^*(\bm{r}_0, t) \Psi(\bm{r}_0, t) = |\Psi(\bm{r}_0, t)|^2$. The evolution of the particle can be described by time dependent Schrodinger equation:
+\begin{equation}
+    i\hbar \pdv{\Psi}{t} = \hat{H} \Psi
+\end{equation}
+The $\hat{H}$ operator is $\frac{\hat{P}^2}{2m} + \hat{V}$. Assuming the wavefunction can be written in the form as $\Psi = \textrm{e}^{-\frac{i E t}{\hbar}}\psi$, where $E$ is the energy. $\psi$ and $\hat{V}$ are independent on time. This form indicate that, the state only rotates in the complex space because the time only contribute to a change on the phase factor. Then the time dependent Schrodinger equation can be written as the time independent form:
+\begin{align}
+    i\hbar \pdv{(\textrm{e}^{-\frac{i E t}{\hbar}}\psi)}{t} &= \textrm{e}^{-\frac{i E t}{\hbar}} \hat{H}\psi\nonumber\\
+    \textrm{e}^{-\frac{i E t}{\hbar}} E\psi &= \hat{H}\psi\nonumber\\
+    E\psi &= \hat{H}\psi
+\end{align}
+This is the time independent Schrodinger equation.
+
+\section{Probability Current}
+Since the position of the particle can be described by probability distribution, then we can define a quantity, probability current $\bm{J}$ to denote that.
+\end{document}
