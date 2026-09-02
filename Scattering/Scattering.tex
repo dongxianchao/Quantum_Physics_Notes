@@ -4,5 +4,65 @@
 \section{\textbf{Scattering}}
 \makebox[\textwidth][s]{Author: Xianchao \hfill Date: \today}
 
+\subsection{Cross Section}
 
+Scattering is an important part in physics. The physics picture of scattering can even be described in classical mechanics. Imagine that two hard balls, one locate at the center and another one move towards the ball. Then the moving ball will hit that ball, and change its velocity, both direction and magnitude. This process is the scattering. It's philosophy not only applied in quantum physics, but also reflected in other area. Here let's look into the quantum case. To understand the exactly meaning of scattering, we have to look into the experiments. Although we have beautiful theory that can quantify and express a lot of properties of particles, but in the experiment, it's much narrower. In experiment, the quantities we can measure are the particles in flow current density, denoted as $J_{in}$, and the number of particles $N$ that hit the receiver at distance $r$, with area $\dd{A}$, during time period $t$. Also, we know which direction we place the receiver, thus we have the $\theta$. For experimentalists, they want to build a relation between the counting number on the receiver, and the in flow current density. It's better for the relation that conveys the physical information. In this case, the scientists defined a quantity, total scattering cross section $\sigma$:
+
+\begin{align}
+    \sigma &= \frac{\textrm{Scattered particle number per unit time}}{\textrm{In flow current density}}\nonumber\\
+    &= \frac{(\frac{N}{\Delta t})}{J_{in}}
+\end{align}
+
+In this case, as long as we know $\sigma$, we know how much particles will be scattered per unit time, $\sigma J_{in}$. We want to further explore the intrinsic mathematical structure of $\sigma$, and relate it to the experiment measurements. It's natural to assume that, the scattering has solid angle dependence. For the same in flow current, there will be different scattering preference. In this case, we can define $\dv{\sigma}{\Omega}$, named cross section.
+
+To fully explain the definition requires rigorous measure theory. Here we won't introduce rigorous mathematics to help understand some basic thoughts of measure theory. The key philosophy of measure theory is assigning each element in a set, with a quantity. In which case, enabling the set to be integrated. For example, the density is assigning each point with mass. Thus, we can solve out the total mass of an object. Another example is the probability. Assume there is a random variable $X$, constitutes a sample space. Then we can assign each sample a probability or probability density. $\sigma$ is something similar. The solid angle space can be treated as the set, or sample space. While the $\sigma$ is the cumulative distribution function $P$. And the cross section, is kind of probability density. Since probability density is $\dv{P}{x}$, and the cross section is $\dv{\sigma}{\Omega}$. Here is the summarization:
+
+\begin{equation}
+    dP \leftrightarrow d\sigma,\qquad dx \leftrightarrow d\Omega,\qquad\frac{dP}{dx} \leftrightarrow \frac{d\sigma}{d\Omega}.
+\end{equation}
+
+Now we can look into the expression for the cross section:
+
+\begin{equation}
+    \label{eq:definition_of_cross_section}
+    \dv{\sigma}{\Omega} = \frac{(\frac{\dd{N}}{\dd{\Omega}\Delta t})}{J_{in}}
+\end{equation}
+
+And in three dimension case, we have $\frac{\dd{N}}{\Delta t} = \bm{J}_{sc} \cdot \dd{\bm{A}} = J_{sc}  r^2\dd{\Omega}$. So we have:
+
+\begin{equation}
+    \dv{\sigma}{\Omega} = \frac{\bm{J}_{sc} \cdot \dd{\bm{A}}}{J_{in}} = \frac{J_{sc}(\theta) r^2}{J_{in}}
+\end{equation}
+
+Considering the cross section should be an intrinsic property of particles, so under the three dimension, we have $J_{sc}(\theta) \propto \frac{1}{r^2}$.
+
+For convenience of calculation, we can treat the in flow and scattering flow as a steady state, and have expression:
+\begin{equation}
+    \psi = \textrm{e}^{i\bm{k}\cdot\bm{r}} + \frac{\textrm{e}^{ikr}}{r}f(\theta)
+\end{equation}
+
+The first term denotes the in flow, as the form of plane wave. The second term is the scattering flow term. Using the current flow equation:
+
+\begin{equation}
+    \bm{J} = \frac{\hbar}{2mi}(\psi^*\nabla \psi - \psi\nabla\psi^*)
+\end{equation}
+
+We have:
+
+\begin{equation}
+    \bm{J}_{in} = \frac{\hbar \bm{k}}{m}
+\end{equation}
+
+And the outflow:
+
+\begin{equation}
+    \bm{J}_{sc} = \frac{\hbar k}{m}\frac{|f(\theta)|^2}{r^2} \bm{e}_r + O(r^{-3})
+\end{equation}
+
+Substitute into the equation \ref{eq:definition_of_cross_section}, we have:
+\begin{equation}
+    \dv{\sigma}{\Omega} = |f(\theta)|^2
+\end{equation}
+
+Now we align the experimental observation, and physical objects.
 \end{document}
