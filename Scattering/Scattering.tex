@@ -36,7 +36,7 @@ And in three dimension case, we have $\frac{\dd{N}}{\Delta t} = \bm{J}_{sc} \cdo
 
 Considering the cross section should be an intrinsic property of particles, so under the three dimension, we have $J_{sc}(\theta) \propto \frac{1}{r^2}$.
 
-For convenience of calculation, we can treat the in flow and scattering flow as a steady state, and have expression:
+For convenience of calculation, we can treat the in flow and scattering flow as a steady state, and have expression in the far field:
 \begin{equation}
     \psi = \textrm{e}^{i\bm{k}\cdot\bm{r}} + \frac{\textrm{e}^{ikr}}{r}f(\theta)
 \end{equation}
@@ -67,4 +67,46 @@ Substitute into the equation \ref{eq:definition_of_cross_section}, we have:
 Now we align the experimental observation, and physical objects.
 
 \subsection{Sommerfeld's Radiation Condition}
+
+The Sommerfeld's radiation condition is the assumption that, the scattering wave function has to be outgoing instead of ingoing. We can derive the three dimension Sommerfeld's radiation condition by the equation:
+
+\begin{equation}
+    \dv{\sigma}{\Omega} = \frac{\bm{J}_{sc} \cdot \dd{\bm{A}}}{J_{in}} = \frac{J_{sc}(\theta) r^2}{J_{in}}
+\end{equation}
+
+We want the differential cross section to be $r$ independent quantity, thus we have:
+
+\begin{equation}
+    J_{sc}^{(3)}(\theta) \propto \frac{1}{r^2}
+\end{equation}
+
+Similarly, we can obtain the two dimension and one dimension Sommerfeld's radiation condition. For the two dimension case, the area $\dd{\bm{A}}$ in two dimension is actually reduced into the length, which should be:
+
+\begin{equation}
+    \dd{\bm{A}} = r \dd{\theta}\hat{\bm{e}}_r
+\end{equation}
+
+Thus, we have:
+
+\begin{equation}
+    J_{sc}^{(2)}(\theta) \propto \frac{1}{r}
+\end{equation}
+
+And in one dimension, the area is reduced into a single point. So there's no $r$ related proportion in $J^{(1)}_{sc}$. Note that, in general we have:
+
+\begin{equation}
+    J_{sc}(\theta) \propto |\psi_{sc}|^2
+\end{equation}
+
+For the case in three dimension or two dimension or one dimension, we have:
+
+\begin{align}
+    \psi^{(3)}_{sc} &= \frac{\textrm{e}^{ikr}f(\theta)}{r}\\
+    \psi^{(2)}_{sc} &= \frac{\textrm{e}^{ikr}f(\theta)}{\sqrt{r}}\\
+    \psi^{(1)}_{sc} &= \textrm{e}^{ikr}f(\theta)
+\end{align}
+
+\subsection{Partial Wave Method}
+
+
 \end{document}

@@ -42,4 +42,75 @@ Thus we have the expression for the probability current:
 \begin{equation}
     \bm{J} = \frac{\hbar}{2mi}(\psi^*\nabla \psi - \psi\nabla\psi^*)
 \end{equation}
+
+\subsection{The Radial Equation for Central Potentials}
+\label{section:The Radial Equation for Central Potentials}
+First let's consider the time independent Schrodinger equation:
+
+\begin{equation}
+    (-\frac{\hbar^2}{2m}\nabla^2 + \hat{V})\psi = E\psi
+\end{equation}
+
+We can apply separation of variables for the wave function:
+
+\begin{equation}
+    \psi(\bm{r}) = \sum_{l, m} R_{lm}(r) Y_{lm}(\theta, \phi)
+\end{equation}
+
+Here $Y_{lm}$ is the spherical harmonic function. This decomposition is essentially a basis expansion, since spherical harmonics form a complete basis set that can expand any arbitrary function. The $R_{lm}(r)$ is actually the coefficient, which can be solved by:
+
+\begin{equation}
+    R_{lm}(r) = \int Y^*_{lm}(\theta, \phi) \psi \dd{\Omega}
+\end{equation}
+
+The Laplacian operator can be written as:
+
+\begin{equation}
+    \nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r}) - \frac{\hat{L}^2}{\hbar^2 r^2}
+\end{equation}
+
+The eigen function of the angular momentum operator $\hat{L}^2$ is spherical harmonic function, which has:
+
+\begin{equation}
+    \hat{L}^2 Y_{lm} = \hbar^2 l(l+1)Y_{lm}
+\end{equation}
+
+Also, we note that, if $\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r})$ operate on the function $f$, we will get:
+
+\begin{align}
+    \frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r}) f &= f'' + \frac{2}{r} f'\nonumber\\
+    &= \frac{1}{r}(fr)''
+\end{align}
+
+So it's reasonable to set $R_{lm}(r) = \frac{u_{lm}(r)}{r}$, which gives:
+
+\begin{equation}
+    \frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r}) R_{lm}(r) = \frac{u''_{lm}(r)}{r}
+\end{equation}
+
+The preparation work has been finished. Now we have to insert the wave function into the time independent Schrodinger equation:
+
+\begin{equation}
+    \left\{-\frac{\hbar^2}{2m}[\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r}) - \frac{\hat{L}^2}{\hbar^2 r^2}] + \hat{V}\right\}\frac{u_{lm}(r)}{r}Y_{lm}(\theta, \psi) = E \frac{u_{lm}(r)}{r}Y_{lm}(\theta, \phi)
+\end{equation}
+
+The spherical harmonic function component can be cancelled in both side, leaving the terms:
+
+\begin{equation}
+    \left\{-\frac{\hbar^2}{2m}[\frac{1}{r^2}\frac{\partial}{\partial r}(r^2 \frac{\partial}{\partial r}) - \frac{l(l+1)}{r^2}] + \hat{V}\right\}\frac{u_{lm}(r)}{r} = E \frac{u_{lm}(r)}{r}
+\end{equation}
+
+Expand the equation, and we have:
+
+\begin{equation}
+    -\frac{\hbar^2}{2m} \frac{1}{r}\pdv[2]{u_{lm}}{r} + \left[\hat{V} + \frac{\hbar^2}{2m} \frac{l(l+1)}{r^2} \right]\frac{u_{lm}}{r} = E\frac{u_{lm}}{r}
+\end{equation}
+
+In the end, we get the differential equation about $u_{lm}(r)$:
+
+\begin{equation}
+    -\frac{\hbar^2}{2m}\pdv[2]{u_{lm}}{r} + \left[\hat{V} + \frac{\hbar^2}{2m} \frac{l(l+1)}{r^2} \right]u_{lm} = E u_{lm}
+\end{equation}
+
+
 \end{document}
